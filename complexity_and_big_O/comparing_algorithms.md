@@ -5,6 +5,7 @@ Question: Why do we need to compare algorithms?
 Below are examples of two different algorithms that solve the same problem. Which one is better?
 
 ```typescript
+// See example1.ts
 // function 1 example
 const fun1 = (n: number) => {
   let sum = 0;
