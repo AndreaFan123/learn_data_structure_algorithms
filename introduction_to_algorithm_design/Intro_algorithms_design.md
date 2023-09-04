@@ -159,6 +159,7 @@ findIntersaction([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]);
 ```
 
 The result would be:
+
 ![intersaction](./assets/intersaction.png)
 
 But let's dive into this function and see how many steps it takes to find the intersaction of two arrays.
@@ -213,4 +214,8 @@ Second `console.log(result)` shows that the result array is:
 
 ![result](./assets/counterResult.png)
 
-</details>
+## Complexity of using counter
+
+- Time complexity: `O(n+m)` (`O(n)`).
+  - We only need to loop through the array once.
+  </details>
