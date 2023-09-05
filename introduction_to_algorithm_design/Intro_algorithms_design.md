@@ -175,6 +175,8 @@ As you can see we need to compare each element of arr1 with each element of arr2
 "counter" is a variable that is used to count something, e.g. the number of times a loop iterates which we will be using this concept to solve the intersaction problem.
 
 ```typescript
+//counter.ts
+
 function counter(arr1: number[], arr2: number[]) {
   let result: number[] = [];
   let counter: { [key: number]: number } = {};
@@ -219,3 +221,154 @@ Second `console.log(result)` shows that the result array is:
 - Time complexity: `O(n+m)` (`O(n)`).
   - We only need to loop through the array once.
   </details>
+
+<details>
+  <summary>Coding Practice 1: Frequency Problem</summary>
+
+# Coding Practice 1: Frequency Problem
+
+Given two strings `abba` and `bbaa`, write a function that returns `true` if the two strings have the same frequency of characters, and `false` otherwise.
+
+```typescript
+// frequency.ts
+
+type Counter = { [key: string]: number };
+
+function checkFrequency(str1: string, str2: string) {
+  // make them arrays
+  let arr1 = str1.split("");
+  let arr2 = str2.split("");
+
+  // Check if they are the same length
+  if (arr1.length !== arr2.length) return false;
+
+  // Create two counter objects
+  let counter1: Counter = {};
+  let counter2: Counter = {};
+
+  // Loop through the first array and count the number of times each element appears
+
+  for (let i = 0; i < arr1.length; i++) {
+    if (counter1[arr1[i]]) {
+      counter1[arr1[i]]++;
+    } else {
+      counter1[arr1[i]] = 1;
+    }
+  }
+
+  for (let j = 0; j < arr2.length; j++) {
+    if (counter2[arr2[j]]) {
+      counter2[arr2[j]]++;
+    } else {
+      counter2[arr2[j]] = 1;
+    }
+  }
+
+  // console.log("counter1",counter1);
+  // console.log("counter2",counter2);
+
+  // Check value in counter
+  for (let property in counter1) {
+    if (!counter1[property]) return false;
+
+    if (counter2[property] !== counter1[property]) return false;
+
+    return true;
+  }
+}
+
+console.log("Result of checking:", checkFrequency("abba", "aabb"));
+```
+
+![frequency](./assets/frequency.png)
+
+Result:
+
+![resultOfChecking1](./assets/resultOfChecking1.png)
+
+</details>
+
+<details>
+<summary>Coidng Practice 2: Average Pair</summary>
+
+# Coding Practice 2: Average Pair
+
+Given a sorted array of integers and a target average, determine if there is a pair of values in the array where the average of the pair equals the target average. There may be more than one pair that matches the average target.
+
+Let's try to write down the solution that came across our mind first, ignore the time complexity for now.
+
+```typescript
+// averagePair.ts
+
+function averagePair(arr: number[], avg: number) {
+  let result: number[] = [];
+  // loop through the array
+  for (let i = 0; i < arr.length - 1; i++) {
+    // loop through the array again
+    for (let j = i + 1; j < arr.length; j++) {
+      // check if the average of the two numbers is equal to the avg
+      if ((arr[i] + arr[j]) / 2 === avg) {
+        result.push(arr[i], arr[j]);
+      }
+    }
+  }
+  console.log("Checking average pari result:", result);
+  return result;
+}
+
+averagePair([-11, 0, 1, 2, 3, 5, 8, 20], 1.5);
+```
+
+Here is the result:
+
+![averagePairResult](./assets/averagePairResult.png)
+
+</details>
+
+<details>
+  <summary> Pointer </summary>
+
+# Pointer
+
+A pointer is a variable that stores the memory address of another variable.
+
+Take the example of the average pair problem, the complexity was O(n^2) which was not good, let's implement the solution with pointers to see if we can improve the time complexity.
+
+```typescript
+// pointer.ts
+
+function pointer(arr: number[], avg: number) {
+  // create right and left pointer and an empty array
+
+  let result: number[] = [];
+  let leftPointer = 0;
+  let rightPointer = arr.length - 1;
+
+  while (rightPointer > leftPointer) {
+    // create a temporary avg
+    let tempoAvg = (arr[rightPointer] + arr[leftPointer]) / 2;
+
+    if (tempoAvg > avg) {
+      rightPointer--;
+    } else if (tempoAvg < avg) {
+      leftPointer++;
+    } else if (tempoAvg === avg) {
+      result.push(arr[leftPointer], arr[rightPointer]);
+      rightPointer--;
+      leftPointer++;
+    }
+  }
+  console.log("Result of average pair", result);
+  return result;
+}
+
+pointer([-11, 0, 1, 2, 3, 5, 8, 20], 1.5);
+```
+
+Here is the result:
+
+![pointerResult](./assets/pointerResult.png)
+
+With implementation of pointers, the time complexity is O(n) which is much better than O(n^2).
+
+</details>
