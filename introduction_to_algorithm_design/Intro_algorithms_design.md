@@ -371,4 +371,95 @@ Here is the result:
 
 With implementation of pointers, the time complexity is O(n) which is much better than O(n^2).
 
+Here is the graph to help us understand the time complexity of pointers:
+
+![pointerExaplin](./assets/pointerExplain.png)
+
+We move the right pointer to the next if there's no matched, once there's a matched. move both pointers to the next.
+
+</details>
+
+<details>
+<summary>Coding practice 3 : Palindrome</summary>
+
+# Coding practice 3 : Palindrome
+
+Palindrome means that a word, phrase, or sequence that reads the same backward as forward, e.g. `madam`, `racecar`.
+
+Let's try to write a function that checks if a string is a palindrome.
+
+```typescript
+// palindrome.ts
+
+function checkIsPalindrome(str: string) {
+  let rightPointer = str.length - 1;
+  let leftPointer = 0;
+
+  while (leftPointer <= rightPointer) {
+    if (str[leftPointer] === str[rightPointer]) {
+      leftPointer++;
+      rightPointer--;
+    } else {
+      console.log(`${str} is not a palindrome`, false);
+      return false;
+    }
+    console.log(`${str} is a palindrome`, true);
+    return true;
+  }
+}
+
+checkIsPalindrome("tacocat");
+checkIsPalindrome("tenet");
+checkIsPalindrome("absolute");
+```
+
+The result is:
+
+![resultOfCheckingPalindrome](./assets/resultOfPalindrome.png)
+
+</details>
+
+<details>
+  <summary> Coding Practice 4 : Subsequence </summary>
+
+# Coding Practice 4 : Subsequence
+
+## What is a subsequence?
+
+A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+
+## Example
+
+`abc`, `abg`, `bdf`, `aeg`, `acefg` ... are subsequences of `abcdefg`.
+
+Let's try to write a function to check if a string is a subsequence of another string by using pointers.
+
+```typescript
+function checkIsSubsequence(str1: string, str2: string) {
+  // There' no point to execute when the length of string 1 is 0
+  if (str1.length === 0) return true;
+
+  let pointer1 = 0;
+  let pointer2 = 0;
+
+  while (pointer2 <= str2.length) {
+    if (str1[pointer1] === str2[pointer2]) {
+      pointer1++;
+    }
+    if (pointer1 >= str1.length) {
+      console.log("Result is:", true);
+      return true;
+    }
+    pointer2++;
+  }
+  console.log("Result is:", false);
+  return false;
+}
+
+checkIsSubsequence("book", "brooklyn");
+checkIsSubsequence("abbbbc", "bbbac");
+```
+
+![resultOfSubsequence](./assets/resultOfSubsequence.png)
+
 </details>
