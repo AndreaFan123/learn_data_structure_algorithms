@@ -463,3 +463,37 @@ checkIsSubsequence("abbbbc", "bbbac");
 ![resultOfSubsequence](./assets/resultOfSubsequence.png)
 
 </details>
+
+<details>
+<summary> Sliding Window </summary>
+
+# What is sliding window?
+
+Sliding window is a technique that is used to solve problems that involve a set of consecutive elements in an array or a string.
+
+For example: we have an array of [2, 3, 9, 10, 11], it's like sub-listed and runs over the underlying collection.
+
+![slidingWindow](./assets/slidingWindow.png)s
+
+</details>
+
+<details>
+<summary> Coding Practice 5 : Sliding window </summary>
+
+## Coding Practice 5 : Max and min sum
+
+In this coding practice, we are going to find the max and min sum of a subarray of a given array by applying sliding window technique.
+
+Here are arrays and the size is 3
+
+`[2, 7, 3, 0, 6, 1, -5, -12, -11]`
+
+`2` would be our start point, and our end point would be `5`, but how to find the index of `5`? Take a look at the graph below:
+
+![maxSum](./assets/maxSum.png)
+
+We can check the last number from the array which is `-11`, the index of `-11` is `arr.length - 1`, the since the size is `3`, we need to push forward 2 times, therefore the index of `5` is `arr.length - 1 - (n - 1)`, `n` refers to the size `3`.
+
+> `arr.length - 1 - (n - 1)` = `arr.length - n`
+
+</details>
