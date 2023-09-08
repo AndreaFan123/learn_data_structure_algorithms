@@ -480,11 +480,11 @@ For example: we have an array of [2, 3, 9, 10, 11], it's like sub-listed and run
 <details>
 <summary> Coding Practice 5 : Sliding window </summary>
 
-## Coding Practice 5 : Max and min sum
+## Coding Practice 5 : Max sum
 
-In this coding practice, we are going to find the max and min sum of a subarray of a given array by applying sliding window technique.
+In this coding practice, we are going to find the max sum from a subarray of a given array by applying sliding window technique.
 
-Here are arrays and the size is 3
+Here are arrays and the size is 3, we need to find the max sum every 3 numbers without duplicates.
 
 `[2, 7, 3, 0, 6, 1, -5, -12, -11]`
 
@@ -495,5 +495,64 @@ Here are arrays and the size is 3
 We can check the last number from the array which is `-11`, the index of `-11` is `arr.length - 1`, the since the size is `3`, we need to push forward 2 times, therefore the index of `5` is `arr.length - 1 - (n - 1)`, `n` refers to the size `3`.
 
 > `arr.length - 1 - (n - 1)` = `arr.length - n`
+
+```typescript
+// sildingWindow.ts
+function maxSum(arr: number[], size: number) {
+  let maxSum = -infinity;
+
+  if (size > arr.length) return null;
+
+  for (let i = 0; i <= arr.length - size; i++) {
+    for (let j = i; j < i + size; j++) {
+      console.log(i, j);
+    }
+  }
+}
+
+maxSum([2, 7, 3, 0, 6, 1, -5, -12, -11], 2);
+```
+
+Here we declare a function called `maxSum` ans pass the argument of an number of array and an argument of number of size.
+
+First we declare a variable called `maxSum` and set it to `-infinity` which is the smallest number in JavaScript.
+
+Then we check if the size is greater than the length of the array, if it is, we return `null`.
+
+Then we loop through the array and check start index.
+
+![resultOfstartIndex](./assets/slidingWindowStartingPoint.png)
+
+Here I have grouped them to make it easier to understand.
+
+![slidingWindowExplain](./assets/slidingWindowExplain.png)
+
+Now let's find max sum from the array.
+
+```typescript
+// sildingWindow.ts
+function maxSum(arr: number[], size: number) {
+  let max_value = -Infinity;
+
+  if (size > arr.length) {
+    return null;
+  }
+
+  for (let i = 0; i <= arr.length - size; i++) {
+    let attempt = 0;
+    for (let j = i; j < i + size; j++) {
+      attempt += arr[j];
+    }
+    if (attempt > max_value) {
+      max_value = attempt;
+    }
+  }
+
+  console.log(max_value);
+  return max_value;
+}
+
+maxSum([2, 7, 3, 0, 6, 1, -5, -12, -11], 3); // 12
+```
 
 </details>
