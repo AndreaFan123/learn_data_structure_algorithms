@@ -1,15 +1,22 @@
 function maxSum(arr: number[], size: number) {
-  // Why -infinity? It's a way to ensure that any real number it is compared to later will be greater.
-  let maxValue = -Infinity;
+  let max_value = -Infinity;
 
-  // Check if size is bigger then the length of an array
-  if (size < arr.length) return null;
+  if (size > arr.length) {
+    return null;
+  }
 
   for (let i = 0; i <= arr.length - size; i++) {
+    let attempt = 0;
     for (let j = i; j < i + size; j++) {
-      console.log(i, j);
+      attempt += arr[j];
+    }
+    if (attempt > max_value) {
+      max_value = attempt;
     }
   }
+
+  console.log(max_value);
+  return max_value;
 }
 
 maxSum([2, 7, 3, 0, 6, 1, -5, -12, -11], 3);
