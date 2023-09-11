@@ -555,4 +555,27 @@ function maxSum(arr: number[], size: number) {
 maxSum([2, 7, 3, 0, 6, 1, -5, -12, -11], 3); // 12
 ```
 
+As we all know, the time complexity of this function is `O(n^2)`, which is not good, let's try to improve it.
+
+```ts
+function maxSumImproved(arr: number[], size: number) {
+  if (size > arr.length) return null;
+
+  // calculate the value of first group [2, 7, 3]
+  let maxValue = 0;
+  for (let i = 0; i < size; i++) {
+    maxValue += arr[i];
+  }
+
+  let tempValue = maxValue;
+  for (let j = size; j < arr.length; j++) {
+    //console.log("j", j); // index of the rest of number
+    tempValue = maxValue + arr[j] - arr[j - size];
+    if (tempValue > maxValue) maxValue = tempValue;
+  }
+  return maxValue;
+}
+maxSumImproved([2, 7, 3, 0, 6, 1, -5, -12, -11], 3);
+```
+
 </details>
