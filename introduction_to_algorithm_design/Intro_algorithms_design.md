@@ -579,3 +579,91 @@ maxSumImproved([2, 7, 3, 0, 6, 1, -5, -12, -11], 3);
 ```
 
 </details>
+
+<!-- <details>
+  <summary>Coding Practice 6 : Min Sub Array
+</details>
+
+<details>
+  <summary>Coding Practice 7 : Unique Letter Substring
+</details>
+
+<details>
+  <summary>Coding Practice 8 : Largest Product
+</details> -->
+
+<details>
+  <summary>(IMPORTANT!) Recursion </summary>
+
+# What is Recursion
+
+- A function that calls itself.
+- Recursion is using a data structure called "stacked", when we are calling a function inside another function, we are on the call stack.
+- Recursion is also a mathenatical relation in sequences.
+
+## Example in math
+
+```
+T(1) = 10
+T(n) = T(n - 1) + 15
+
+T(2) = T(2 - 1) + 15 = 10 + 15 = 25
+T(3) = T(3 - 1) + 15 = T(2) + 15 = 25 + 15 = 40
+T(4) = T(4 - 1) + 15 = T(3) + 15 = 40 + 15 = 55
+T(5) = T(5 - 1) + 15 = T(4) + 15 = 55 + 15 = 70
+...
+```
+
+## Pseudocode
+
+```text
+RecursionSequence(n):
+  if n equals to 1:
+    return 10
+  else:
+    return RecursionSequence(n - 1) + 15
+```
+
+## Example in JavaScript
+
+```ts
+function recursionSequence(n: number): number {
+  console.log(`We have executed function recursionSequence(${n})`);
+  if (n === 1) return 10;
+  return recursionSequence(n - 1) + 15;
+}
+
+console.log(recursionSequence(2));
+console.log(recursionSequence(3));
+console.log(recursionSequence(4));
+console.log(recursionSequence(5));
+```
+
+Here is the result:
+
+![recrusion](./assets/recursionResult.png)
+
+Here we added a `console.log` to see the details:
+![recursionWithConsoleLog](./assets/recursionWithExaplain.png)
+
+## Dive into what really happens in the background
+
+![recursionBehind](./assets/recursionBehind.png)
+
+```ts
+recursionSequence(3);
+
+// Under the hood
+
+// executed function first
+recursionSequence(3) = recursionSequence(2);
+recursionSequence(2) = recursionSequence(1);
+recursionSequence(1) = 10;
+
+// Add number 15 to the result
+recursionSequence(3) = 25 + 15;
+recursionSequence(2) = 10 + 15;
+recursionSequence(1) = 10;
+```
+
+</details>
