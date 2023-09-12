@@ -666,4 +666,7 @@ recursionSequence(2) = 10 + 15;
 recursionSequence(1) = 10;
 ```
 
+> Resource:
+> [JavaScript Recursion Examples | Javascript Recursion Tutorial](https://www.youtube.com/watch?v=Q0alTGQ-lXk)
+
 </details>
