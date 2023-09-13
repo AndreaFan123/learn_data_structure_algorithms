@@ -463,3 +463,210 @@ checkIsSubsequence("abbbbc", "bbbac");
 ![resultOfSubsequence](./assets/resultOfSubsequence.png)
 
 </details>
+
+<details>
+<summary> Sliding Window </summary>
+
+# What is sliding window?
+
+Sliding window is a technique that is used to solve problems that involve a set of consecutive elements in an array or a string.
+
+For example: we have an array of [2, 3, 9, 10, 11], it's like sub-listed and runs over the underlying collection.
+
+![slidingWindow](./assets/slidingWindow.png)s
+
+</details>
+
+<details>
+<summary> Coding Practice 5 : Sliding window </summary>
+
+## Coding Practice 5 : Max sum
+
+In this coding practice, we are going to find the max sum from a subarray of a given array by applying sliding window technique.
+
+Here are arrays and the size is 3, we need to find the max sum every 3 numbers without duplicates.
+
+`[2, 7, 3, 0, 6, 1, -5, -12, -11]`
+
+`2` would be our start point, and our end point would be `5`, but how to find the index of `5`? Take a look at the graph below:
+
+![maxSum](./assets/maxSum.png)
+
+We can check the last number from the array which is `-11`, the index of `-11` is `arr.length - 1`, the since the size is `3`, we need to push forward 2 times, therefore the index of `5` is `arr.length - 1 - (n - 1)`, `n` refers to the size `3`.
+
+> `arr.length - 1 - (n - 1)` = `arr.length - n`
+
+```typescript
+// sildingWindow.ts
+function maxSum(arr: number[], size: number) {
+  let maxSum = -infinity;
+
+  if (size > arr.length) return null;
+
+  for (let i = 0; i <= arr.length - size; i++) {
+    for (let j = i; j < i + size; j++) {
+      console.log(i, j);
+    }
+  }
+}
+
+maxSum([2, 7, 3, 0, 6, 1, -5, -12, -11], 2);
+```
+
+Here we declare a function called `maxSum` ans pass the argument of an number of array and an argument of number of size.
+
+First we declare a variable called `maxSum` and set it to `-infinity` which is the smallest number in JavaScript.
+
+Then we check if the size is greater than the length of the array, if it is, we return `null`.
+
+Then we loop through the array and check start index.
+
+![resultOfstartIndex](./assets/slidingWindowStartingPoint.png)
+
+Here I have grouped them to make it easier to understand.
+
+![slidingWindowExplain](./assets/slidingWindowExplain.png)
+
+Now let's find max sum from the array.
+
+```typescript
+// sildingWindow.ts
+function maxSum(arr: number[], size: number) {
+  let max_value = -Infinity;
+
+  if (size > arr.length) {
+    return null;
+  }
+
+  for (let i = 0; i <= arr.length - size; i++) {
+    let attempt = 0;
+    for (let j = i; j < i + size; j++) {
+      attempt += arr[j];
+    }
+    if (attempt > max_value) {
+      max_value = attempt;
+    }
+  }
+
+  console.log(max_value);
+  return max_value;
+}
+
+maxSum([2, 7, 3, 0, 6, 1, -5, -12, -11], 3); // 12
+```
+
+As we all know, the time complexity of this function is `O(n^2)`, which is not good, let's try to improve it.
+
+```ts
+function maxSumImproved(arr: number[], size: number) {
+  if (size > arr.length) return null;
+
+  // calculate the value of first group [2, 7, 3]
+  let maxValue = 0;
+  for (let i = 0; i < size; i++) {
+    maxValue += arr[i];
+  }
+
+  let tempValue = maxValue;
+  for (let j = size; j < arr.length; j++) {
+    //console.log("j", j); // index of the rest of number
+    tempValue = maxValue + arr[j] - arr[j - size];
+    if (tempValue > maxValue) maxValue = tempValue;
+  }
+  return maxValue;
+}
+maxSumImproved([2, 7, 3, 0, 6, 1, -5, -12, -11], 3);
+```
+
+</details>
+
+<!-- <details>
+  <summary>Coding Practice 6 : Min Sub Array
+</details>
+
+<details>
+  <summary>Coding Practice 7 : Unique Letter Substring
+</details>
+
+<details>
+  <summary>Coding Practice 8 : Largest Product
+</details> -->
+
+<details>
+  <summary>(IMPORTANT!) Recursion </summary>
+
+# What is Recursion
+
+- A function that calls itself.
+- Recursion is using a data structure called "stacked", when we are calling a function inside another function, we are on the call stack.
+- Recursion is also a mathenatical relation in sequences.
+
+## Example in math
+
+```
+T(1) = 10
+T(n) = T(n - 1) + 15
+
+T(2) = T(2 - 1) + 15 = 10 + 15 = 25
+T(3) = T(3 - 1) + 15 = T(2) + 15 = 25 + 15 = 40
+T(4) = T(4 - 1) + 15 = T(3) + 15 = 40 + 15 = 55
+T(5) = T(5 - 1) + 15 = T(4) + 15 = 55 + 15 = 70
+...
+```
+
+## Pseudocode
+
+```text
+RecursionSequence(n):
+  if n equals to 1:
+    return 10
+  else:
+    return RecursionSequence(n - 1) + 15
+```
+
+## Example in JavaScript
+
+```ts
+function recursionSequence(n: number): number {
+  console.log(`We have executed function recursionSequence(${n})`);
+  if (n === 1) return 10;
+  return recursionSequence(n - 1) + 15;
+}
+
+console.log(recursionSequence(2));
+console.log(recursionSequence(3));
+console.log(recursionSequence(4));
+console.log(recursionSequence(5));
+```
+
+Here is the result:
+
+![recrusion](./assets/recursionResult.png)
+
+Here we added a `console.log` to see the details:
+![recursionWithConsoleLog](./assets/recursionWithExaplain.png)
+
+## Dive into what really happens in the background
+
+![recursionBehind](./assets/recursionBehind.png)
+
+```ts
+recursionSequence(3);
+
+// Under the hood
+
+// executed function first
+recursionSequence(3) = recursionSequence(2);
+recursionSequence(2) = recursionSequence(1);
+recursionSequence(1) = 10;
+
+// Add number 15 to the result
+recursionSequence(3) = 25 + 15;
+recursionSequence(2) = 10 + 15;
+recursionSequence(1) = 10;
+```
+
+> Resource:
+> [JavaScript Recursion Examples | Javascript Recursion Tutorial](https://www.youtube.com/watch?v=Q0alTGQ-lXk)
+
+</details>
