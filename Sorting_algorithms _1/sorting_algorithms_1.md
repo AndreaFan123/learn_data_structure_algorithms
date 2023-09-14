@@ -1,4 +1,3 @@
-
 # Sorting Algorithms Part 1
 
 In this section, we will be looking at the following sorting algorithms which may not have the best performance but in some cases, they are still useful.
@@ -42,10 +41,113 @@ bubbleSort(a):
 
 The outer loop runs from index 0 to the length of the array - 2, i.e. [5, 2, 6, 1, 4], the outer loop will run from **index 0 (5) to index 3 (1)**, since we don't need to execute the last one, therefore we need to subtract 2 from the length of the array.
 
-The inner loop runs from the last index of the array (j), and it has to compare with the previous index (array - 1) all the way to the index of i + 1
+The inner loop runs from the last index of the array (j), and it has to compare with the previous index (array - 1) all the way to the index of i + 1.
+
+## Example
+
+```ts
+// bubbleSort.ts
+const bubbleSort = (arr: number[]) => {
+  for (let i = 0; i <= arr.length - 2; i++) {
+    for (let j = arr.length - 1; j >= i + 1; j--) {
+      if (arr[j] < arr[j - 1]) {
+        // swap
+        let temp = arr[j];
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+      }
+    }
+  }
+  console.log(arr);
+};
+
+bubbleSort([2, 9, 12, 3, 5, 7, 10]);
+```
+
+Result:
+
+![bubbleSort](./assets/bubbleSortResult.png)
+
+Let's give a large array and see how long it takes to sort it.
+
+```ts
+const bubbleSort = (arr: number[]) => {
+  let step = 0;
+  for (let i = 0; i <= arr.length - 2; i++) {
+    for (let j = arr.length - 1; j >= i + 1; j--) {
+      if (arr[j] < arr[j - 1]) {
+        // swap
+        let temp = arr[j];
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+        step++;
+      }
+    }
+  }
+  console.log(`It took ${step} to complete this bubble sort.`);
+  console.log(arr);
+};
+
+// Make a large array
+let largeArr: number[] = [];
+
+for (let i = 0; i < 100; i++) {
+  largeArr.push(Math.floor(Math.random() * 100));
+}
+
+bubbleSort(largeArr);
+```
+
+Result:
+
+![bubbleSortLargeArr](./assets/largeArr.png)
+
+## Big O of Bubble Sort
+
+- Worst case: O(n^2)
+  - From smallest to largest or from largest to smallest and the numbers are totally random.
+
+```text
+[n, n-1, n-2,...4, 3, 2, 1]
+[1, n, n-1, n-2,...4, 3, 2]
+[1, 2, n, n-1, n-2,...4, 3]
+[1, 2, 3, n, n-1, n-2,...4]
+[1, 2, 3, 4,...,n-2, n-1, n]
+```
+
+From example above, we know that we need to take `(n-1) + (n-2) + (n-3) +...+(n-n)`, which is `n(n-1)/2`, therefore the worst case is `O(n^2)`.
+
+- Best case: O(n)
+  - If the array is already or almost sorted **from smallest to largest**, then we only need to compare each element once.
+
+```ts
+const bubbleSort = (arr: number[]) => {
+  for (let i = 0; i <= arr.length - 2; i++) {
+    let isSwapped = false;
+    for (let j = arr.length - 1; j >= i + 1; j--) {
+      if (arr[j] < arr[j - 1]) {
+        // swap
+        let temp = arr[j];
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+        isSwapped = true;
+      }
+    }
+    // If there is no swap, then break the loop
+    if (!isSwapped) {
+      break;
+    }
+  }
+  console.log(arr);
+};
+
+bubbleSort([2, 5, 7, 9, 10, 12, 3]);
+```
+
+Since this is a nearly sorted array, we only need to compare each element once (loop at least once), therefore the best case is `O(n)`.
 
 > Resource
 > [Javascript Freecodecamp Algorithm #31: Implement Bubble Sort](https://www.youtube.com/watch?v=IAeLoGzU4RE)
 
 </details>
-```
+
