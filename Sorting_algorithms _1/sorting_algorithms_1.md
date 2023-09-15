@@ -151,3 +151,12 @@ Since this is a nearly sorted array, we only need to compare each element once (
 
 </details>
 
+<details>
+  <summary>Insertion Sort<summary>
+
+# What is Insertion Sort?
+
+- It has the same performance as bubble sort, but it is more efficient than bubble sort, in most of the cases, it's complexity is `O(n^2)`.
+- The priciple of insertion sort is keep inserting a new value into a sorted array until it is inserted to the correct postion so the result would be sorted.
+
+</details>
