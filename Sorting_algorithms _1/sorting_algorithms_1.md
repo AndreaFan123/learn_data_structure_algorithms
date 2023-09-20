@@ -151,3 +151,91 @@ Since this is a nearly sorted array, we only need to compare each element once (
 
 </details>
 
+<details>
+  <summary>Insertion Sort<summary>
+
+# What is Insertion Sort?
+
+- It has the same performance as bubble sort, but it is more efficient than bubble sort, in most of the cases, it's complexity is `O(n^2)`.
+- The priciple of insertion sort is keep inserting a new value into a sorted array until it is inserted to the correct postion so the result would be sorted.
+
+## Pseduo Code
+
+```text
+insertionSort(arr):
+  for i from index 1 to arr.length - 1:
+    key = arr[j]
+    // Insert arr[i] into the sorted sequence arr[0...i-1]
+    i = j - 1
+    while i >= 0 and arr[i] > key:
+      arr[i + 1] = arr[i]
+      i -= 1
+    arr[i + 1] = key
+```
+
+- First for loop starts from index 1 to the end of the array, when it starts from index 1? Because we assume that the first element (index 0) is already sorted, so we need to check from index 1.
+
+## Example
+
+```ts
+// insertion.ts
+const insertionSort = (arr: number[]) => {
+  for (let j = 1; j <= arr.length - 1; j++) {
+    let key = arr[j];
+    let i = j - 1;
+    while (i >= 0 && arr[i] > key) {
+      arr[i + 1] = arr[i];
+      i = i - 1;
+    }
+    arr[i + 1] = key;
+  }
+  return arr;
+};
+
+console.log(insertionSort([14, -4, 17, 6, 22, 1, -5]));
+```
+
+Result:
+
+![insertionSort](./assets/insertionResult.png)
+
+Let's see every step of the insertion sort.
+
+![steps](./assets/everyStepsOfinsertion.png)
+
+## Big O of Insertion Sort
+
+- Worst Case Performance: O(n^2)
+  - If an array is sorted from largest to smallest, it would be like this:
+
+```text
+[n, n-1, n-2, n-3,8, 9, 7...0]
+```
+
+We need to swap `n-1` to the left, then `n-2` to the left, then `n-3` to the left until `0`.
+
+```text
+1 + 2 + 3 + 4 + 5 +...+ n-1 = n(n-1)/2 = n^2/2 + n/2 = O(n^2)
+```
+
+- Best Case Performance: O(n)
+  - If an array is already sorted from smallest to largest.
+
+```text
+[0, 2, 5, 7, 9, 10, 12]
+```
+
+We only need to compare each element once `(n-1)`, therefore the best case is `O(n)`.
+
+- Average Case Performance: O(n^2)
+
+</details>
+
+<details>
+<summary>Selection Sort</summary>
+
+# What is Selection Sort?
+
+- Select the smallest element from the unsorted array and swap it with the first element of the unsorted array.
+
+</details>
