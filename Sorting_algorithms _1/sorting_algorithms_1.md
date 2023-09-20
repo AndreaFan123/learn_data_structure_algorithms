@@ -203,4 +203,39 @@ Let's see every step of the insertion sort.
 
 ![steps](./assets/everyStepsOfinsertion.png)
 
+## Big O of Insertion Sort
+
+- Worst Case Performance: O(n^2)
+  - If an array is sorted from largest to smallest, it would be like this:
+
+```text
+[n, n-1, n-2, n-3,8, 9, 7...0]
+```
+
+We need to swap `n-1` to the left, then `n-2` to the left, then `n-3` to the left until `0`.
+
+```text
+1 + 2 + 3 + 4 + 5 +...+ n-1 = n(n-1)/2 = n^2/2 + n/2 = O(n^2)
+```
+
+- Best Case Performance: O(n)
+  - If an array is already sorted from smallest to largest.
+
+```text
+[0, 2, 5, 7, 9, 10, 12]
+```
+
+We only need to compare each element once `(n-1)`, therefore the best case is `O(n)`.
+
+- Average Case Performance: O(n^2)
+
+</details>
+
+<details>
+<summary>Selection Sort</summary>
+
+# What is Selection Sort?
+
+- Select the smallest element from the unsorted array and swap it with the first element of the unsorted array.
+
 </details>
