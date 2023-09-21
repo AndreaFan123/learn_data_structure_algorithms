@@ -238,4 +238,82 @@ We only need to compare each element once `(n-1)`, therefore the best case is `O
 
 - Select the smallest element from the unsorted array and swap it with the first element of the unsorted array.
 
+## Pseduo Code
+
+### Finding the smallest value
+
+```text
+smallestValue(arr):
+  smallest = arr[0]
+    for i from 1 to arr.length - 1:
+      if arr[i] < smallest:
+        smallest = arr[i]
+```
+
+### Selection Sort
+
+```text
+selectionSort(arr):
+  (We don't need to loop through the last element.)
+  for i from 0 to arr.length - 2:
+    minIndex = i
+    for j from i to arr.length - 1:
+      if arr[j] < arr[minIndex]:
+        minIndex = j
+    swap arr[i] with arr[minIndex]
+```
+
+### Example
+
+```ts
+// selectionSort.ts
+
+const selectionSort = (arr: number[]) => {
+  // Loop through the array to the last second element
+  for (let i = 0; i <= arr.length - 2; i++) {
+    // Set the minIndex to the current index in the first loop
+    let minIndex = i;
+    // Loop through the array from the current index to the last element
+    for (let j = i; j <= arr.length - 1; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    let temp = arr[minIndex];
+    arr[minIndex] = arr[i];
+    arr[i] = temp;
+  }
+  console.log(arr);
+  return arr;
+};
+
+selectionSort([-2, 3, 7, 10, -9, 9, 1]);
+```
+
+Result:
+
+![selectionSort](./assets/selectionSort.png)
+
+## Big O of Selection Sort
+
+- Worst Case Performance: O(n^2)
+  - If the order of the array is from largest to smallest, and we need to sort it from smallest to largest.
+
+```text
+[n, n-1, n-2, n-3, ...2, 1, 0]
+
+n + n - 1 + n - 2 + n - 3 + ... + 2 + 1 + 0 = (1+n)n/2 = n^2/2 + n/2 = O(n^2)
+```
+
+- Best Case Performance: O(n^2)
+  - If the order of the array is from smallest to largest, we still need to check the smallest value is indeed the smallest value.
+
+```text
+[0, 1, 2, 3, ...n-2, n-1, 0]
+
+n + n - 1 + n - 2 + n - 3 + ... + 2 + 1 + 0 = (1+n)n/2 = n^2/2 + n/2 = O(n^2)
+```
+
+- Average Case Performance: O(n^2)
+
 </details>
