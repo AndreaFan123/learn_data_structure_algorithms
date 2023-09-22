@@ -229,6 +229,11 @@ We only need to compare each element once `(n-1)`, therefore the best case is `O
 
 - Average Case Performance: O(n^2)
 
+## Resource
+
+1. [Learn Insertion Sort](https://www.youtube.com/watch?v=8mJ-OhcfpYg)
+2. [CS50: Insertion Sort](https://www.youtube.com/watch?v=O0VbBkUvriI)
+
 </details>
 
 <details>
@@ -315,5 +320,10 @@ n + n - 1 + n - 2 + n - 3 + ... + 2 + 1 + 0 = (1+n)n/2 = n^2/2 + n/2 = O(n^2)
 ```
 
 - Average Case Performance: O(n^2)
+
+## Resource
+
+1. [Learn Selection Sort](https://www.youtube.com/watch?v=EwjnF7rFLns)
+2. [CS50:Selection Sort](https://www.youtube.com/watch?v=3hH8kTHFw2A)
 
 </details>
