@@ -152,7 +152,7 @@ Since this is a nearly sorted array, we only need to compare each element once (
 </details>
 
 <details>
-  <summary>Insertion Sort<summary>
+  <summary>Insertion Sort</summary>
 
 # What is Insertion Sort?
 
