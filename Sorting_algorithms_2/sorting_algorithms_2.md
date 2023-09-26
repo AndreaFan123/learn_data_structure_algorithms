@@ -164,4 +164,9 @@ When using merge sort, we know that it has to divide the array into two havles a
 
 Take a look at the code, when implementing merge sort, we have created several new arrays (left, right) and recursive calls, so the space complexity is `O(n)`.
 
+### Resources
+
+[Learn Merge Sort in 13 minutes](https://www.youtube.com/watch?v=3j0SWDX4AtU)
+[Sort List - Merge Sort](https://www.youtube.com/watch?v=TGveA1oFhrc)
+
 </details>
