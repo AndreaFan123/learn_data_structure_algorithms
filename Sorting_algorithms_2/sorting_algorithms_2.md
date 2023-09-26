@@ -68,4 +68,105 @@ length = 8
 
 ![complexity](./assets/complexity.png)
 
+## Pseudocode
+
+```text
+// Part 1
+merge(arr1, arr2):
+  result = [], i = 0, j = 0
+  while i < arr1.length && j < arr2.length:
+    if arr1[i] > arr2[j]:
+      add arr2[j] to result
+      j++
+    else:
+      add arr1[i] to result
+      i++
+
+either arr1 or arr2 will have something left, pul all remaining elements to result by using loop.
+
+// Part 2
+mergeSort(arr):
+  if arr.length = 1:
+    return arr
+  else:
+    mid = arr.length/2
+    left = arr.slice(0, middle)
+    right = arr.slice(middle, arr.length)
+    return merge(mergeSort(left), mergeSort(right))
+```
+
+**function mergeSort** is a **recursive function**, it will call itself until the length of array is 1, then it will return the array, and then it will merge the array.
+
+**function merge** is a function that will merge two **sorted** arrays into one sorted array.
+
+## Implementation
+
+```ts
+// Define merge function
+// Need to pass sorted arrays
+function merge(arr1: number[], arr2: number[]) {
+  let result: number[] = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] > arr2[j]) {
+      result.push(arr2[j]);
+      j++;
+    } else {
+      result.push(arr1[i]);
+      i++;
+    }
+  }
+  // Dealing with the left elements, loop them and add the to the arr
+  while (i < arr1.length) {
+    result.push(arr1[i]);
+    i++;
+  }
+  while (j < arr2.length) {
+    result.push(arr2[j]);
+    j++;
+  }
+  return result;
+}
+// console.log(merge([1, 5, 9], [-3, 2, 7]));
+
+function mergeSort(arr: number[]): number[] {
+  if (arr.length <= 1) {
+    return arr;
+  } else {
+    let middle = Math.floor(arr.length / 2);
+    let left = arr.slice(0, middle);
+    let right = arr.slice(middle, arr.length);
+    return merge(mergeSort(left), mergeSort(right));
+  }
+}
+
+console.log(mergeSort([13, 9, 10, 4, 7, 2, 11, 5, 19, 1]));
+
+/**
+ * Result
+[
+  1,  2,  4,  5,  7,
+  9, 10, 11, 13, 19
+]
+ * 
+*/
+```
+
+## Big O of Merge Sort
+
+- Worse case: `O(nlogn)`
+- Best case: `O(nlogn)`
+- Average case: `O(nlogn)`
+
+When using merge sort, we know that it has to divide the array into two havles and then merge them wherther the array is sorted or not, so the best case, worse case and average case are all the same.
+
+Take a look at the code, when implementing merge sort, we have created several new arrays (left, right) and recursive calls, so the space complexity is `O(n)`.
+
+### Resources
+
+[Learn Merge Sort in 13 minutes](https://www.youtube.com/watch?v=3j0SWDX4AtU)
+[Sort List - Merge Sort](https://www.youtube.com/watch?v=TGveA1oFhrc)
+
 </details>
