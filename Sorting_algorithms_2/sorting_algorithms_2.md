@@ -170,3 +170,35 @@ Take a look at the code, when implementing merge sort, we have created several n
 [Sort List - Merge Sort](https://www.youtube.com/watch?v=TGveA1oFhrc)
 
 </details>
+
+<details>
+  <summary>Tree</summary>
+
+# What is Tree?
+
+Tree is a data structure that consists of nodes in a parent/child relationship.
+
+- A tree should have only one root node.
+- Another definition of tree is "tree is acyclic", which means there is **no cycle** in the tree.
+
+![tree](./assets/tree.png)
+
+## Various types of trees
+
+- Binary Tree
+
+  - Each node can have **at most two** children.
+
+- Complete Binary Tree
+
+  - Every level of the tree is **filled** except for the last level.
+  - The last level is filled from **left to right**.
+
+- Full Binary Tree
+
+  - Every node has **0 or 2** children.
+
+- Max Heap
+  - Parent nodes are **always larger** than child nodes.
+
+<details>
