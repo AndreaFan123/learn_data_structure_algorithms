@@ -179,7 +179,7 @@ Take a look at the code, when implementing merge sort, we have created several n
 Tree is a data structure that consists of nodes in a parent/child relationship.
 
 - A tree should have only one root node.
-- Another definition of tree is "tree is acyclic", which means there is **no cycle** in the tree.
+- Another definition of tree is **"tree is acyclic"**, which means there is **no cycle** in the tree.
 
 ![tree](./assets/tree.png)
 
@@ -189,16 +189,37 @@ Tree is a data structure that consists of nodes in a parent/child relationship.
 
   - Each node can have **at most two** children.
 
+  ![binaryTree](./assets/binaryTree.png)
+
 - Complete Binary Tree
 
   - Every level of the tree is **filled** except for the last level.
   - The last level is filled from **left to right**.
 
+  ![completeBimaryTree](./assets/completeBinaryTree.png)
+
 - Full Binary Tree
 
-  - Every node has **0 or 2** children.
+  - All **leaf nodes** have the same depth.
+
+  ![fullBinaryTree](./assets/fullBinaryTree.png)
 
 - Max Heap
-  - Parent nodes are **always larger** than child nodes.
+
+  - A **complete binary tree** where the largest node is always **at the root** for any sub-trees.
+
+  ![maxHeap](./assets/maxHeap.png)
+
+### Try to make this tree a max heap
+
+![practice](./assets/pracitce.png)
+
+Result should be:
+
+![practiceResult](./assets/practiceResult.png)
+
+## How to create a max heap?
+
+Swap a node called `N` down, and keep swapping id the node `N` has a child node that is bigger than the node `N`.
 
 <details>
