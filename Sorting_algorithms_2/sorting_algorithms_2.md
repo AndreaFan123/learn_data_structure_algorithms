@@ -222,4 +222,4 @@ Result should be:
 
 Swap a node called `N` down, and keep swapping id the node `N` has a child node that is bigger than the node `N`.
 
-<details>
+</details>
