@@ -13,6 +13,8 @@
   - [Example of a Node](#example-of-a-node)
   - [Adding a insertion method](#adding-a-insertion-method)
     - [Pushing Pseudocode](#pushing-pseudocode)
+  - [Adding a removal method](#adding-a-removal-method)
+    - [Popping Pseudocode](#popping-pseudocode)
 
 ## Prerequisite
 
