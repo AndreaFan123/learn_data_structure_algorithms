@@ -34,7 +34,7 @@ class SinglyLinkedList {
     return this;
   }
 
-  pop(val) {
+  pop() {
     // If there're no nodes in the list, return undefined.
     if (!this.head) {
       return undefined;
@@ -44,8 +44,15 @@ class SinglyLinkedList {
     // (2) Declare a variable called newTail and point to the head
     let current = this.head;
     let newTail = current;
+    // Loop through the list until you reach the tail.
     while (current.next) {
       newTail = current;
+      current = current.next;
     }
+    this.tail = newTail;
+    //  Set the next property of the 2nd to last node to be null.
+    this.tail.next = null;
+    this.length--;
+    return current;
   }
 }

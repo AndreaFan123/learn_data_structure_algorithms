@@ -282,7 +282,42 @@ Before we remove a node, we need to traverse the linked list to find the node we
 
 - If there're no nodes in the list, return undefined.
 - Loop through the list until you reach the tail.
+  - We need to declare two variables, `current` and `newTail`.
+    - Set `current` to be the head of the list.
+    - Set `newTail` to be the current node.
 - Set the next property of the 2nd to last node to be null.
 - Set the tail to be the 2nd to last node.
 - Decrement the length of the list by 1.
 - Return the value of the node removed.
+
+```javascript
+// Check singly_linked_list_pop.js in the examples folder
+
+class SinglyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+  push(val) {
+    ...
+  }
+  pop() {
+    if(!this.head) {
+      return undefined;
+    }
+    let current = this.head;
+    let newTail = current;
+    while(current.next) {
+      current = newTail;
+      current = current.next;
+    }
+    this.tail = newTail;
+    this.tail.next = null;
+    this.length--;
+    return current;
+  }
+}
+```
+
+![linked_list_pop](./assets/linkde_list_pop.png)
