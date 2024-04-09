@@ -271,3 +271,18 @@ console.log(list_1);
 ```
 
 ![singly_linked_list_push](./assets/linked_list_push.png)
+
+---
+
+### Adding a removal method
+
+Before we remove a node, we need to traverse the linked list to find the node we want to remove.
+
+#### Popping Pseudocode
+
+- If there're no nodes in the list, return undefined.
+- Loop through the list until you reach the tail.
+- Set the next property of the 2nd to last node to be null.
+- Set the tail to be the 2nd to last node.
+- Decrement the length of the list by 1.
+- Return the value of the node removed.
