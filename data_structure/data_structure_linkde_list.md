@@ -323,3 +323,39 @@ class SinglyLinkedList {
 ```
 
 ![linked_list_pop](./assets/linkde_list_pop.png)
+
+### Shifting
+
+Removing a new node from the beginning of the linked list.
+
+#### Review of shift() and unshift()
+
+- `shift()`: To **remove the fist item** in an array and **return the removed element.**
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+const shiftedEle = arr.shift();
+
+console.log("arr", arr); // [2, 3, 4, 5]
+console.log("shiftedEle", shiftedEle); // 1 => number
+```
+
+- `unshift()`: To **add elements** at the beginning of an array and return the **new length of the array**.
+
+```javascript
+const arr = [1, 2, 3];
+
+const newArr = arr.unshift(4, 5);
+
+console.log(newArr); // 5
+
+console.log(arr); // [4, 5, 1, 2, 3]
+```
+
+#### Shifting Pseudocode
+
+- If there are no nodes, return undefined.
+- Store the current head property in a variable.
+- Set the head property to be the current head's next property.
+- Decrement the length by 1.
+- Return the value of the node removed.
