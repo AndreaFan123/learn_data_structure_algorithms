@@ -53,6 +53,11 @@ class SinglyLinkedList {
     //  Set the next property of the 2nd to last node to be null.
     this.tail.next = null;
     this.length--;
+    // Here to check if there's head or tail
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
     return current;
   }
 }
